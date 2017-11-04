@@ -1,3 +1,11 @@
 body {
   background-color: #d3d3d3;
 }
+
+#name-form {
+  font-weight: bold;
+}
+
+#name-display {
+  text-align: center;
+}

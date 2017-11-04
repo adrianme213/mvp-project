@@ -1,5 +1,6 @@
 import React from 'react';
 import NameForm from './NameForm.jsx';
+import FlashcardForm from './FlashcardForm.jsx';
 
 class WordApp extends React.Component {
   constructor(props) {
@@ -7,14 +8,14 @@ class WordApp extends React.Component {
   }
 
   componentDidMount() {
-    console.log('hello')
+
   }
 
   render() {
       return(
           <div>
-            Hello
             <NameForm />
+            <FlashcardForm />
           </div>
       )
   }

@@ -21182,7 +21182,7 @@ module.exports = function() {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21195,6 +21195,10 @@ var _NameForm = __webpack_require__(33);
 
 var _NameForm2 = _interopRequireDefault(_NameForm);
 
+var _FlashcardForm = __webpack_require__(34);
+
+var _FlashcardForm2 = _interopRequireDefault(_FlashcardForm);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21204,32 +21208,30 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var WordApp = function (_React$Component) {
-  _inherits(WordApp, _React$Component);
+    _inherits(WordApp, _React$Component);
 
-  function WordApp(props) {
-    _classCallCheck(this, WordApp);
+    function WordApp(props) {
+        _classCallCheck(this, WordApp);
 
-    return _possibleConstructorReturn(this, (WordApp.__proto__ || Object.getPrototypeOf(WordApp)).call(this, props));
-  }
-
-  _createClass(WordApp, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      console.log('hello');
+        return _possibleConstructorReturn(this, (WordApp.__proto__ || Object.getPrototypeOf(WordApp)).call(this, props));
     }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        'Hello',
-        _react2.default.createElement(_NameForm2.default, null)
-      );
-    }
-  }]);
 
-  return WordApp;
+    _createClass(WordApp, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_NameForm2.default, null),
+                _react2.default.createElement(_FlashcardForm2.default, null)
+            );
+        }
+    }]);
+
+    return WordApp;
 }(_react2.default.Component);
 
 exports.default = WordApp;
@@ -21268,7 +21270,8 @@ var NameForm = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (NameForm.__proto__ || Object.getPrototypeOf(NameForm)).call(this, props));
 
     _this.state = {
-      name: ''
+      name: '',
+      nameDisplayed: false
     };
     // Bind functions
     _this.handleChange = _this.handleChange.bind(_this);
@@ -21282,27 +21285,43 @@ var NameForm = function (_React$Component) {
       this.setState({
         name: e.target.value
       });
-      console.log(e.target.value);
     }
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(e) {
-      alert('Thanks for the submission, ' + this.state.name);
+      this.setState({
+        nameDisplayed: !this.state.nameDisplayed
+      });
       e.preventDefault();
     }
   }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'form',
-        { onSubmit: this.handleSubmit },
-        _react2.default.createElement(
-          'label',
-          null,
-          'Name:',
-          _react2.default.createElement('input', { type: 'text', value: this.state.value, onChange: this.handleChange })
-        ),
-        _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+        'div',
+        null,
+        this.state.nameDisplayed ? _react2.default.createElement(
+          'div',
+          { id: 'name-display' },
+          'Welcome to Flashcard Word Review: ',
+          this.state.name,
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'button',
+            { onClick: this.handleSubmit },
+            'Edit Name'
+          )
+        ) : _react2.default.createElement(
+          'form',
+          { id: 'name-form', onSubmit: this.handleSubmit },
+          _react2.default.createElement(
+            'label',
+            null,
+            'Name:',
+            _react2.default.createElement('input', { type: 'text', value: this.state.value, onChange: this.handleChange })
+          ),
+          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+        )
       );
     }
   }]);
@@ -21311,6 +21330,140 @@ var NameForm = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = NameForm;
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FlashcardForm = function (_React$Component) {
+  _inherits(FlashcardForm, _React$Component);
+
+  function FlashcardForm(props) {
+    _classCallCheck(this, FlashcardForm);
+
+    var _this = _possibleConstructorReturn(this, (FlashcardForm.__proto__ || Object.getPrototypeOf(FlashcardForm)).call(this, props));
+
+    _this.state = {
+      word: '',
+      definition: '',
+      name: '',
+      displayed: false
+    };
+    // Bind functions
+    _this.handleWordChange = _this.handleWordChange.bind(_this);
+    _this.handleDefinitionChange = _this.handleDefinitionChange.bind(_this);
+    _this.handleNameChange = _this.handleNameChange.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(FlashcardForm, [{
+    key: 'handleWordChange',
+    value: function handleWordChange(e) {
+      this.setState({
+        word: e.target.value
+      });
+    }
+  }, {
+    key: 'handleDefinitionChange',
+    value: function handleDefinitionChange(e) {
+      this.setState({
+        definition: e.target.value
+      });
+    }
+  }, {
+    key: 'handleNameChange',
+    value: function handleNameChange(e) {
+      this.setState({
+        name: e.target.value
+      });
+    }
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      this.setState({
+        displayed: !this.state.displayed
+      });
+      e.preventDefault();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        this.state.displayed ? _react2.default.createElement(
+          'div',
+          { id: 'flashcard' },
+          'WORD: ',
+          this.state.word,
+          ' ',
+          _react2.default.createElement('br', null),
+          'DEFINITION: ',
+          this.state.definition,
+          ' ',
+          _react2.default.createElement('br', null),
+          'SUBMITTED BY: ',
+          this.state.name,
+          ' ',
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'button',
+            { onClick: this.handleSubmit },
+            'Edit Name'
+          )
+        ) : _react2.default.createElement(
+          'form',
+          { id: 'flashcard-form', onSubmit: this.handleSubmit },
+          _react2.default.createElement(
+            'label',
+            null,
+            'Word:',
+            _react2.default.createElement('input', { type: 'text', value: this.state.word, onChange: this.handleWordChange })
+          ),
+          _react2.default.createElement(
+            'label',
+            null,
+            'Definition:',
+            _react2.default.createElement('input', { type: 'text', value: this.state.definition, onChange: this.handleDefinitionChange })
+          ),
+          _react2.default.createElement(
+            'label',
+            null,
+            'Username:',
+            _react2.default.createElement('input', { type: 'text', value: this.state.name, onChange: this.handleNameChange })
+          ),
+          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+        )
+      );
+    }
+  }]);
+
+  return FlashcardForm;
+}(_react2.default.Component);
+
+exports.default = FlashcardForm;
 
 /***/ })
 /******/ ]);

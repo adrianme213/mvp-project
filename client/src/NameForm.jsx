@@ -4,7 +4,8 @@ class NameForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
+      name: '',
+      nameDisplayed: false
     };
     // Bind functions
     this.handleChange = this.handleChange.bind(this);
@@ -15,23 +16,35 @@ class NameForm extends React.Component {
     this.setState({
       name: e.target.value
     });
-    console.log(e.target.value)
   }
 
   handleSubmit(e) {
-    alert('Thanks for the submission, ' + this.state.name);
+    this.setState({
+      nameDisplayed: !this.state.nameDisplayed
+    });
     e.preventDefault();
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-      <label>
-        Name:
-        <input type="text" value={this.state.value} onChange={this.handleChange} />
-      </label>
-      <input type="submit" value="Submit" />
-      </form>
+      <div>
+      {this.state.nameDisplayed ?
+        <div id="name-display">
+          Welcome to Flashcard Word Review: {this.state.name}
+          <br />
+          <button onClick={this.handleSubmit}>Edit Name</button>
+        </div>
+        :
+        <form id="name-form" onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      }
+      </div>
+
     );
   }
 }
