@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class FlashcardForm extends React.Component {
+class RandomCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -75,4 +75,4 @@ class FlashcardForm extends React.Component {
   }
 }
 
-export default FlashcardForm;
+export default RandomCard;

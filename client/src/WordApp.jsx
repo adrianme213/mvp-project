@@ -1,5 +1,5 @@
 import React from 'react';
-import NameForm from './NameForm.jsx';
+import RetrieveEntries from './RetrieveEntries.jsx';
 import FlashcardForm from './FlashcardForm.jsx';
 
 class WordApp extends React.Component {
@@ -8,13 +8,12 @@ class WordApp extends React.Component {
   }
 
   componentDidMount() {
-
   }
 
   render() {
       return(
           <div>
-            <NameForm />
+            <RetrieveEntries />
             <FlashcardForm />
           </div>
       )
