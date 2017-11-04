@@ -1,4 +1,5 @@
 import React from 'react';
+import NameForm from './NameForm.jsx';
 
 class WordApp extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class WordApp extends React.Component {
       return(
           <div>
             Hello
+            <NameForm />
           </div>
       )
   }
